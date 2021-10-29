@@ -10,14 +10,14 @@ let book = require('../models/books');
 /* GET books List page. READ */
 router.get('/', (req, res, next) => {
   // find all books in the books collection
-  book.find( (err, Books) => {
+  book.find((err, bookList) => {
     if (err) {
       return console.error(err);
     }
     else {
       res.render('books/index', {
         title: 'Books',
-        books: Books
+        books: bookList
       });
     }
   });
@@ -26,16 +26,17 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
-  res.render('books/details', {title: 'Add A Book', books:''});
+  res.render('books/details', {title: 'Add A Book', books: ''});
 });
 
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
   let newBook = book({
-    "Title": req.body.Title,
-    "Price": req.body.Price,
-    "Author": req.body.Author,
-    "Genre": req.body.Genre
+    "Title": req.body.title,
+    "Price": req.body.price,
+    "Author": req.body.author,
+    "Genre": req.body.genre,
+    "Description": ''
   });
 
   book.create(newBook, (err, Book) => {
@@ -70,10 +71,10 @@ router.post('/:id', (req, res, next) => {
 
   let updatedBook = book({
     "_id": id,
-    "Title": req.body.Title,
-    "Price": req.body.Price,
+    "Title": req.body.title,
+    "Price": req.body.price,
     "Author": req.body.Author,
-    "Genre": req.body.Genre
+    "Genre": req.body.Genre,
   });
 
   book.updateOne({_id: id}, updatedBook, (err) => {
