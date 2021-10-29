@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/CreativeCodingGuy/Midterm-301139655"
   },
   "keywords": [
     "NodeJS",

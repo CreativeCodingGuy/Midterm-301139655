@@ -1,3 +1,10 @@
+/*
+  Author: Aleksandr Sokolov
+  StudentID: 301139655
+  Web App Name: My Favourite Book List
+  File Name: app.js
+*/
+
 /* custom JS goes here */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */
